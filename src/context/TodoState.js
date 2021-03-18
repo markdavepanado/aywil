@@ -52,8 +52,12 @@ export const Context = createContext(initialState);
 export const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  const addTodo = (todos) => {
+    dispatch({ type: "ADD_TODO", payload: todos });
+  };
+
   return (
-    <Context.Provider value={{ todos: state.todos }}>
+    <Context.Provider value={{ todos: state.todos, addTodo }}>
       {children}
     </Context.Provider>
   );
