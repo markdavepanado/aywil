@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&family=Roboto:wght@100;300;400;700&display=swap");
+
+:root {
+  --done-primary-color: #4d9900;
+  --done-base-color: #f2ffe6;
+  --todo-primary-color: #ff9900;
+  --todo-secondary-color: #bb7000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono", monospace;
+}
+
+.app {
+  height: 95vh;
+  width: calc(95vw - 10px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+.left-container {
+  flex-direction: column;
+}
+.left-container,
+.right-container {
+  flex: 1;
+  display: flex;
+}
+
+.app__component-title {
+  width: fit-content;
+  font-weight: 900;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--done-primary-color);
+}
+
+/* () , < ! @ # $ % ^ & * 0 1 2 3 4 5 6 7 8 9 */
