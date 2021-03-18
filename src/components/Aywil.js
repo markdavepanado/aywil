@@ -4,15 +4,17 @@ import "../styles/Aywil.css";
 
 const Aywil = () => {
   const [validations, setValidations] = useState({ textarea: "" });
-  // const txtAreaMaxLength = 200;
-  const txtAreaMaxLength = 20;
+  const [textAreaCharLength, setTextAreaCharLength] = useState(0);
+  // const textAreaMaxLength = 200;
+  const textAreaMaxLength = 20;
 
   const textareaValidation = (e) => {
-    const { value, maxLength } = e.target;
-    if (value.length >= txtAreaMaxLength) {
+    const { value } = e.target;
+    setTextAreaCharLength(value.length);
+    if (value.length >= textAreaMaxLength) {
       setValidations({
         ...validations,
-        textarea: `You cannot type more than ${txtAreaMaxLength}`,
+        textarea: `You cannot type more than ${textAreaMaxLength}`,
       });
     } else {
       setValidations({
@@ -23,16 +25,25 @@ const Aywil = () => {
   };
   return (
     <div className='aywil'>
-      {console.log(validations)}
       <small className='aywil__small'>What will you do today?</small>
-      <div className='aywil__ib-container'>
-        <textarea
-          maxLength={txtAreaMaxLength}
-          className={`aywil__textarea ${
-            validations.textarea.length > 0 ? "aywil__textarea--error" : ""
-          }`}
-          onChange={textareaValidation}
-        />
+      <div className='aywil__tb-container'>
+        <div className='aywil__st-container'>
+          <small
+            className={`aywil__small atwil__small--counter ${
+              validations.textarea.length > 0 ? "aywil__small--error" : ""
+            }`}
+          >
+            <span>{textAreaCharLength}</span>/{textAreaMaxLength}
+          </small>
+          <textarea
+            maxLength={textAreaMaxLength}
+            className={`aywil__textarea ${
+              validations.textarea.length > 0 ? "aywil__textarea--error" : ""
+            }`}
+            onChange={textareaValidation}
+            placeholder='I will..'
+          />
+        </div>
         <button className='aywil__button'>+</button>
       </div>
     </div>

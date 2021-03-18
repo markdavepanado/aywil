@@ -3,21 +3,25 @@ import Aywil from "./components/Aywil";
 import TodoList from "./components/TodoList";
 import DoneList from "./components/DoneList";
 
+import { Provider } from "./context/TodoState";
+
 import "./styles/App.css";
 
 function App() {
   return (
-    <div className='app'>
-      <div className='left-container'>
-        <Developer />
-        <Aywil />
-        <h4 className='app__component-title'>Done List 🍃</h4>
-        <DoneList />
+    <Provider>
+      <div className='app'>
+        <div className='left-container'>
+          <Developer />
+          <Aywil />
+          <h4 className='app__component-title'>Done List 🍃</h4>
+          <DoneList />
+        </div>
+        <div className='right-container'>
+          <TodoList />
+        </div>
       </div>
-      <div className='right-container'>
-        <TodoList />
-      </div>
-    </div>
+    </Provider>
   );
 }
 

@@ -5,6 +5,8 @@
   --done-base-color: #f2ffe6;
   --todo-primary-color: #ff9900;
   --todo-secondary-color: #bb7000;
+
+  --error-primary-color: rgba(255, 0, 0, 0.75);
 }
 
 * {

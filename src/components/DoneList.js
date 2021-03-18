@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Todo from "./Todo";
+
+import { Context } from "../context/TodoState";
 
 import "../styles/DoneList.css";
 
 const DoneList = () => {
+  const { todos } = useContext(Context);
   return (
     <div className='done-list'>
-      <Todo />
-      <Todo />
-      <Todo />
+      {todos.length > 0 ? (
+        todos
+          .filter((todo) => todo.isDone === true)
+          .map((mappedTodo) => (
+            <Todo
+              key={mappedTodo.id}
+              text={mappedTodo.text}
+              dateCreated={mappedTodo.createdAt}
+              dateAccomplished={mappedTodo.dateAccomplished}
+              isDone={mappedTodo.isDone}
+            />
+          ))
+      ) : (
+        <small>No Todo</small>
+      )}
     </div>
   );
 };
