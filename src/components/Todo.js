@@ -4,12 +4,16 @@ import "../styles/Todo.css";
 
 const Todo = ({ text, dateCreated, dateAccomplished, isDone }) => {
   return (
-    <div className={`todo ${isDone ? undefined : "todo--done"}`}>
+    <div className={`todo ${isDone ? "todo--done" : ""}`}>
       <div className='todo__date-container'>
         <small className='todo__date'>Date Created: {dateCreated}</small>
-        <small className='todo__date'>
-          Date Accomplished: {dateAccomplished}
-        </small>
+        {isDone ? (
+          <small className='todo__date'>
+            Date Accomplished: {dateAccomplished}
+          </small>
+        ) : (
+          ""
+        )}
       </div>
       <h5 className='todo__h5'>{text}</h5>
     </div>

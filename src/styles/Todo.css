@@ -6,17 +6,18 @@
   justify-content: center;
   position: relative;
   font-family: "Roboto Mono", monospace;
-  background-color: #f2f2f2;
+  background-color: var(--todo-base-color);
   min-height: 8rem;
   width: 98%;
   margin: 0 0 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border-right: 0.5rem solid var(--done-primary-color);
+  border-right: 0.5rem solid var(--todo-primary-color);
 }
 
 .todo--done {
   background-color: var(--done-base-color);
+  border-right: 0.5rem solid var(--done-primary-color);
 }
 
 .todo__date-container {

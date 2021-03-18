@@ -14,10 +14,15 @@ function App() {
         <div className='left-container'>
           <Developer />
           <Aywil />
-          <h4 className='app__component-title'>Done List 🍃</h4>
+          <h4 className='app__component-title app__component-title-done'>
+            Done List 🍃
+          </h4>
           <DoneList />
         </div>
         <div className='right-container'>
+          <h4 className='app__component-title app__component-title-todo'>
+            To-Do List 🍂
+          </h4>
           <TodoList />
         </div>
       </div>
