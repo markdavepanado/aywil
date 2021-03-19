@@ -6,8 +6,12 @@ const initialState = {
   todos: [
     {
       id: 1,
-      text:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu",
+      text: `Lorem 
+       ipsum dolor sit amet,                                consectetuer 
+               adipiscing elit.                                                   Aenean   commodo ligula 
+      eget dolor. 
+                   Aenean massa. Cum sociis natoque penatibus et magnis  dis 
+                   parturient montes,             nascetur ridiculus mus.                               Donec qu`,
       createdAt: "03/19/21",
       dateAccomplished: "03/20/21",
       isDone: true,

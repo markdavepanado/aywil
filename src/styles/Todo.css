@@ -18,12 +18,19 @@
   border-right: 0.5rem solid var(--done-primary-color);
 }
 
-.todo__date-container {
+.todo__todo-date-container {
   position: absolute;
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
+  width: 100%;
   padding: 0.5rem;
+}
+
+.todo__date-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .todo__date {
@@ -38,8 +45,20 @@
 }
 
 .todo__h5 {
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   white-space: pre-wrap;
+}
+
+.todo__action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todo__button {
+  border: none;
+  padding: 0.3rem;
+  font-size: 0.5em;
+  cursor: pointer;
 }
 
 /* () , < ! @ # $ % ^ & * 0 1 2 3 4 5 6 7 8 9 */

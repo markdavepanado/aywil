@@ -1,21 +1,28 @@
 import React from "react";
+import DoneIcon from "@material-ui/icons/Done";
 
 import "../styles/Todo.css";
 
 const Todo = ({ text, dateCreated, dateAccomplished, isDone }) => {
   return (
     <div className={`todo ${isDone ? "todo--done" : ""}`}>
-      <div className='todo__date-container'>
-        <small className='todo__date'>
-          Date Created: {new Date(dateCreated).toLocaleString()}
-        </small>
-        {isDone ? (
+      <div className='todo__todo-date-container'>
+        <div className='todo__action'>
+          <button className='todo__button todo__button--edit'>✏️ Edit</button>
+          <button className='todo__button todo__button--done'>✔️ Done</button>
+        </div>
+        <div className='todo__date-container'>
           <small className='todo__date'>
-            Date Accomplished: {new Date(dateAccomplished).toLocaleString()}
+            Date Created: {new Date(dateCreated).toLocaleString()}
           </small>
-        ) : (
-          ""
-        )}
+          {isDone ? (
+            <small className='todo__date'>
+              Date Accomplished: {new Date(dateAccomplished).toLocaleString()}
+            </small>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <h5 className='todo__h5'>{text}</h5>
     </div>
