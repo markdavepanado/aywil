@@ -30,6 +30,11 @@
   font-size: 0.5rem;
   font-weight: bolder;
   padding: 0 0.5rem;
+  color: var(--todo-primary-color);
+}
+
+.todo--done .todo__date {
+  color: var(--done-primary-color);
 }
 
 .todo__h5 {

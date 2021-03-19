@@ -6,10 +6,12 @@ const Todo = ({ text, dateCreated, dateAccomplished, isDone }) => {
   return (
     <div className={`todo ${isDone ? "todo--done" : ""}`}>
       <div className='todo__date-container'>
-        <small className='todo__date'>Date Created: {dateCreated}</small>
+        <small className='todo__date'>
+          Date Created: {new Date(dateCreated).toLocaleString()}
+        </small>
         {isDone ? (
           <small className='todo__date'>
-            Date Accomplished: {dateAccomplished}
+            Date Accomplished: {new Date(dateAccomplished).toLocaleString()}
           </small>
         ) : (
           ""

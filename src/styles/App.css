@@ -3,7 +3,7 @@
 :root {
   --done-primary-color: #4d9900;
   --done-base-color: #f2ffe6;
-  --todo-primary-color: #ff9900;
+  --todo-primary-color: #ff9800;
   --todo-secondary-color: #bb7000;
   --todo-base-color: #fff5e6;
 
@@ -53,4 +53,10 @@
   color: var(--todo-primary-color);
 }
 
+@media only screen and (max-width: 720px) {
+  .app {
+    flex-direction: column;
+    overflow: auto;
+  }
+}
 /* () , < ! @ # $ % ^ & * 0 1 2 3 4 5 6 7 8 9 */
