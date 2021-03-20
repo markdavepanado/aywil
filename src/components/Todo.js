@@ -1,32 +1,66 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import DoneIcon from "@material-ui/icons/Done";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+import { Context } from "../context/TodoState";
+
 import "../styles/Todo.css";
 
-const Todo = ({ text, dateCreated, dateAccomplished, isDone }) => {
+const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
   const styles = {
     todoButtonIcon: {
       fontSize: "1em",
     },
   };
 
+  const { deleteTodo, doneTodo, isEditing, setIsEditing } = useContext(Context);
+
+  const deleteBtnClick = (e) => {
+    deleteTodo(id);
+  };
+
+  const doneBtnClick = (e) => {
+    const now = new Date().toJSON();
+    doneTodo(id, !isDone, now);
+    console.log("clicked");
+  };
+
+  const editBtnClick = (e) => {
+    const todo = {
+      id: id,
+      text: text,
+      dateCreated: dateCreated,
+      dateAccomplished: dateAccomplished,
+      isDone: isDone,
+    };
+    setIsEditing(todo, !isEditing);
+  };
+
   return (
     <div className={`todo ${isDone ? "todo--done" : ""}`}>
       <div className='todo__todo-date-container'>
         <div className='todo__action'>
-          <button className='todo__button todo__button--delete'>
+          <button
+            className='todo__button todo__button--delete'
+            onClick={deleteBtnClick}
+          >
             <DeleteIcon style={styles.todoButtonIcon} />
           </button>
           {isDone ? (
             ""
           ) : (
             <>
-              <button className='todo__button todo__button--edit'>
+              <button
+                className='todo__button todo__button--edit'
+                onClick={editBtnClick}
+              >
                 <EditIcon style={styles.todoButtonIcon} />
               </button>
-              <button className='todo__button todo__button--done'>
+              <button
+                className='todo__button todo__button--done'
+                onClick={doneBtnClick}
+              >
                 <DoneIcon style={styles.todoButtonIcon} />
               </button>
             </>

@@ -5,6 +5,33 @@ export default (state, action) => {
         ...state,
         todos: [action.payload, ...state.todos],
       };
+    case "DELETE_TODO":
+      return {
+        ...state,
+        todos: [...state.todos.filter((todo) => todo.id !== action.payload)],
+      };
+    case "DONE_TODO":
+      console.log(action.payload);
+      return {
+        ...state,
+        todos: [
+          ...state.todos.map((todo) =>
+            todo.id === action.payload.id
+              ? {
+                  ...todo,
+                  isDone: action.payload.isDone,
+                  dateAccomplished: action.payload.dateAccomplished,
+                }
+              : todo
+          ),
+        ],
+      };
+    case "SET_EDITING":
+      return {
+        ...state,
+        isEditing: action.payload.isEditing,
+        todo: action.payload.todo,
+      };
     default:
       return state;
   }
