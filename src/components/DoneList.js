@@ -23,7 +23,7 @@ const DoneList = () => {
             />
           ))
       ) : (
-        <small>No Todo</small>
+        <h5>You have done nothing so far. 🥱</h5>
       )}
     </div>
   );

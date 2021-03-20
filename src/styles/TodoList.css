@@ -1,7 +1,6 @@
 .todo-list {
   overflow: auto;
   flex: 1;
-  border-radius: 12px;
   margin: 0 0 0 1rem;
 }
 

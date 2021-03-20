@@ -9,17 +9,21 @@ const TodoList = () => {
   const { todos } = useContext(Context);
   return (
     <div className='todo-list'>
-      {todos
-        .filter((todo) => todo.isDone === false)
-        .map((mappedTodo) => (
-          <Todo
-            key={mappedTodo.id}
-            text={mappedTodo.text}
-            dateCreated={mappedTodo.createdAt}
-            dateAccomplished={mappedTodo.dateAccomplished}
-            isDone={mappedTodo.isDone}
-          />
-        ))}
+      {todos.length > 0 ? (
+        todos
+          .filter((todo) => todo.isDone === false)
+          .map((mappedTodo) => (
+            <Todo
+              key={mappedTodo.id}
+              text={mappedTodo.text}
+              dateCreated={mappedTodo.createdAt}
+              dateAccomplished={mappedTodo.dateAccomplished}
+              isDone={mappedTodo.isDone}
+            />
+          ))
+      ) : (
+        <h5>No task for today, why not make one? 🤨</h5>
+      )}
     </div>
   );
 };
