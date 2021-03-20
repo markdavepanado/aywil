@@ -34,7 +34,7 @@ const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
       dateAccomplished: dateAccomplished,
       isDone: isDone,
     };
-    setIsEditing(todo, !isEditing);
+    setIsEditing(todo, true);
   };
 
   return (

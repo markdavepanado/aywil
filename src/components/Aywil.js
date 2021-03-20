@@ -4,6 +4,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 import { ThemeProvider } from "@material-ui/core/styles";
+import UpdateIcon from "@material-ui/icons/Update";
 
 import { Context } from "../context/TodoState";
 import { fabTheme } from "../utils/theme";
@@ -18,7 +19,7 @@ const Aywil = () => {
   const textAreaMaxLength = 200;
   const { height, width } = useWindowDimensions();
 
-  const { addTodo, isEditing, todo } = useContext(Context);
+  const { addTodo, isEditing, todo, setIsEditing } = useContext(Context);
 
   useEffect(() => {
     if (width < 720) {
@@ -63,7 +64,10 @@ const Aywil = () => {
   const checkEditMode = () => {
     if (isEditing) {
       setTextArea(todo.text);
+      return;
     }
+
+    setTextArea("");
   };
 
   const textareaValidation = (e) => {
@@ -87,6 +91,13 @@ const Aywil = () => {
     setHideAywil(!hideAywil);
   };
 
+  const cancelBtnClick = () => {
+    setIsEditing("", false);
+  };
+  const updateBtnClick = () => {
+    setIsEditing("", false);
+  };
+
   return (
     <>
       <ThemeProvider theme={fabTheme}>
@@ -105,7 +116,11 @@ const Aywil = () => {
         </Fab>
       </ThemeProvider>
       {/* aywil aywil--hide */}
-      <div className={`aywil ${hideAywil ? "aywil--hide" : ""}`}>
+      <div
+        className={`aywil ${hideAywil ? "aywil--hide" : ""} ${
+          isEditing ? "aywil--editing" : ""
+        }`}
+      >
         <small className='aywil__small'>What will you do today?</small>
         <form className='aywil__tb-container' onSubmit={submitTodo}>
           <div className='aywil__st-container'>
@@ -126,9 +141,26 @@ const Aywil = () => {
               placeholder='I will..'
             />
           </div>
-          <button className='aywil__button' type='submit'>
-            <AddIcon style={{ color: fabTheme.palette.textColor.main }} />
-          </button>
+          {isEditing ? (
+            <div className='aywil__button-container'>
+              <button
+                className='aywil__button aywil__button--cancel'
+                onClick={cancelBtnClick}
+              >
+                <CloseIcon fontSize='small' />
+              </button>
+              <button
+                className='aywil__button aywil__button--update'
+                onClick={updateBtnClick}
+              >
+                <UpdateIcon />
+              </button>
+            </div>
+          ) : (
+            <button className='aywil__button' type='submit'>
+              <AddIcon style={{ color: fabTheme.palette.textColor.main }} />
+            </button>
+          )}
         </form>
       </div>
     </>
