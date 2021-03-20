@@ -32,6 +32,17 @@ export default (state, action) => {
         isEditing: action.payload.isEditing,
         todo: action.payload.todo,
       };
+    case "UPDATE_TODO":
+      return {
+        ...state,
+        todos: [
+          ...state.todos.map((mappedTodo) =>
+            mappedTodo.id === action.payload.id
+              ? action.payload.todo
+              : mappedTodo
+          ),
+        ],
+      };
     default:
       return state;
   }

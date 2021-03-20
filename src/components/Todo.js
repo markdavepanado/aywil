@@ -23,7 +23,6 @@ const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
   const doneBtnClick = (e) => {
     const now = new Date().toJSON();
     doneTodo(id, !isDone, now);
-    console.log("clicked");
   };
 
   const editBtnClick = (e) => {

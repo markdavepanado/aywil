@@ -28,10 +28,19 @@ export const Provider = ({ children }) => {
     });
   };
 
+  
+
   const setIsEditing = (todo, isEditing) => {
     dispatch({
       type: "SET_EDITING",
       payload: { todo: todo, isEditing: isEditing },
+    });
+  };
+
+  const updateTodo = (id, todo) => {
+    dispatch({
+      type: "UPDATE_TODO",
+      payload: { id: id, todo: todo },
     });
   };
 
@@ -45,6 +54,7 @@ export const Provider = ({ children }) => {
         deleteTodo,
         doneTodo,
         setIsEditing,
+        updateTodo,
       }}
     >
       {children}

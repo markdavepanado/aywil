@@ -19,7 +19,9 @@ const Aywil = () => {
   const textAreaMaxLength = 200;
   const { height, width } = useWindowDimensions();
 
-  const { addTodo, isEditing, todo, setIsEditing } = useContext(Context);
+  const { addTodo, isEditing, todo, setIsEditing, updateTodo } = useContext(
+    Context
+  );
 
   useEffect(() => {
     if (width < 720) {
@@ -45,6 +47,10 @@ const Aywil = () => {
     }
 
     if (validations.textarea.length > 0) {
+      return;
+    }
+
+    if (isEditing) {
       return;
     }
 
@@ -95,6 +101,17 @@ const Aywil = () => {
     setIsEditing("", false);
   };
   const updateBtnClick = () => {
+    updateTodo(todo.id, {
+      id: todo.id,
+      text: textArea,
+      createdAt: todo.dateCreated,
+      dateAccomplished: todo.dateAccomplished,
+      isDone: todo.isDone,
+    });
+
+    setTextArea("");
+    setTextAreaCharLength(0);
+    setValidations({ textarea: "" });
     setIsEditing("", false);
   };
 
