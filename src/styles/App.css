@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&family=Roboto:wght@100;300;400;700&display=swap");
 
 :root {
-  --done-primary-color: #4d9900;
+  --done-primary-color: #4caf50;
+  --done-secondary-color: #388e3c;
   --done-base-color: #f2ffe6;
   --todo-primary-color: #ff9800;
-  --todo-secondary-color: #bb7000;
+  --todo-secondary-color: #f57c00;
   --todo-base-color: #fff5e6;
 
-  --error-primary-color: rgba(255, 0, 0, 0.75);
+  /* --error-primary-color: rgba(255, 0, 0, 0.75); */
+  --error-primary-color: #f44336;
+  --error-secondary-color: #d32f2f;
 }
 
 * {
