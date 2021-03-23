@@ -41,6 +41,9 @@ const Aywil = () => {
   useEffect(() => {
     if (isEditing) {
       setTextArea(todo.text);
+      if (width < 720) {
+        setHideAywil(false);
+      }
       return;
     }
     setTextArea("");
@@ -73,6 +76,9 @@ const Aywil = () => {
       isDone: false,
     });
 
+    if (width < 720) {
+      setHideAywil(true);
+    }
     setTextArea("");
     setTextAreaCharLength(0);
     setValidations({ textarea: "" });
@@ -101,6 +107,9 @@ const Aywil = () => {
 
   const cancelBtnClick = () => {
     setIsEditing("", false);
+    if (width < 720) {
+      setHideAywil(true);
+    }
   };
   const updateBtnClick = () => {
     updateTodo(todo.id, {
@@ -110,6 +119,10 @@ const Aywil = () => {
       dateAccomplished: todo.dateAccomplished,
       isDone: todo.isDone,
     });
+
+    if (width < 720) {
+      setHideAywil(true);
+    }
 
     setTextArea("");
     setTextAreaCharLength(0);
