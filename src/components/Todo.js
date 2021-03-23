@@ -39,6 +39,18 @@ const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
   return (
     <div className={`todo ${isDone ? "todo--done" : ""}`}>
       <div className='todo__todo-date-container'>
+        <div className='todo__date-container'>
+          <small className='todo__date'>
+            Date Created: {new Date(dateCreated).toLocaleString()}
+          </small>
+          {isDone ? (
+            <small className='todo__date'>
+              Date Accomplished: {new Date(dateAccomplished).toLocaleString()}
+            </small>
+          ) : (
+            ""
+          )}
+        </div>
         <div className='todo__action'>
           <button
             className='todo__button todo__button--delete'
@@ -63,18 +75,6 @@ const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
                 <DoneIcon style={styles.todoButtonIcon} />
               </button>
             </>
-          )}
-        </div>
-        <div className='todo__date-container'>
-          <small className='todo__date'>
-            Date Created: {new Date(dateCreated).toLocaleString()}
-          </small>
-          {isDone ? (
-            <small className='todo__date'>
-              Date Accomplished: {new Date(dateAccomplished).toLocaleString()}
-            </small>
-          ) : (
-            ""
           )}
         </div>
       </div>

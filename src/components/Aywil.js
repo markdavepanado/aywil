@@ -16,6 +16,7 @@ const Aywil = () => {
   const [textAreaCharLength, setTextAreaCharLength] = useState(0);
   const [textArea, setTextArea] = useState("");
   const [hideAywil, setHideAywil] = useState(true);
+  const [hideAywil__small, setHideAywil__small] = useState(false);
   const textAreaMaxLength = 200;
   const { height, width } = useWindowDimensions();
 
@@ -28,6 +29,12 @@ const Aywil = () => {
       setHideAywil(true);
     } else {
       setHideAywil(false);
+    }
+
+    if (width <= 440) {
+      setHideAywil__small(true);
+    } else {
+      setHideAywil__small(false);
     }
   }, [width]);
 
@@ -115,6 +122,27 @@ const Aywil = () => {
     setIsEditing("", false);
   };
 
+  const pasteTextArea = (e) => {
+    e.preventDefault();
+
+    e.clipboardData.items[0].getAsString((text) => {
+      setTextAreaCharLength(text.length);
+      setTextArea(text);
+      if (text.length >= textAreaMaxLength) {
+        setValidations({
+          ...validations,
+          textarea: `You cannot type more than ${textAreaMaxLength}`,
+        });
+      } else {
+        setTextArea(text);
+        setValidations({
+          ...validations,
+          textarea: "",
+        });
+      }
+    });
+  };
+
   return (
     <>
       <ThemeProvider theme={fabTheme}>
@@ -144,7 +172,7 @@ const Aywil = () => {
             <small
               className={`aywil__small atwil__small--counter ${
                 validations.textarea.length > 0 ? "aywil__small--error" : ""
-              }`}
+              } ${hideAywil__small ? "aywil__small--hide" : ""}`}
             >
               <span>{textAreaCharLength}</span>/{textAreaMaxLength}
             </small>
@@ -154,6 +182,7 @@ const Aywil = () => {
                 validations.textarea.length > 0 ? "aywil__textarea--error" : ""
               }`}
               onChange={textareaValidation}
+              onPaste={pasteTextArea}
               value={textArea}
               placeholder='I will..'
             />

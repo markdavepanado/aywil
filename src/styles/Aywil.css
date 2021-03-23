@@ -34,6 +34,10 @@
   color: #666666;
 }
 
+.aywil__small--hide {
+  display: none;
+}
+
 .aywil__small--error > span {
   color: var(--error-primary-color);
 }
@@ -141,4 +145,18 @@
     display: inline-flex !important;
   }
 }
-/* () , < ! @ # $ % ^ & * 0 1 2 3 4 5 6 7 8 9 */
+
+@media only screen and (max-width: 390px) {
+  .aywil__tb-container {
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  .aywil__st-container {
+    margin: 0;
+  }
+
+  .aywil__button {
+    margin-top: 1rem;
+  }
+}
