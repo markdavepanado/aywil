@@ -17,21 +17,30 @@ const Developer = () => {
       <div className='developer__social-container'>
         <h2 className='developer__h2'>You can reach me here.</h2>
         <div className='developer__social-links'>
-          <a href='https://www.facebook.com/dabeeeeeee7' target='_blank'>
+          <a
+            href='https://www.facebook.com/dabeeeeeee7'
+            target='_blank'
+            rel='author'
+          >
             <FacebookIcon
               className='developer__icon'
               style={{ color: "#0572E7" }}
             />
           </a>
-          <a href='https://github.com/markdavepanado' target='_blank'>
+          <a
+            href='https://github.com/markdavepanado'
+            target='_blank'
+            rel='author'
+          >
             <GitHubIcon
               className='developer__icon'
               style={{ color: "#000000" }}
             />
           </a>
           <a
-            href='https://www.linkedin.com/in/mark-dave-panado-0040b2180/'
+            href='https://www.linkedin.com/in/mark-dave-panado/'
             target='_blank'
+            rel='author'
           >
             <LinkedInIcon
               className='developer__icon'

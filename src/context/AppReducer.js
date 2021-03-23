@@ -1,4 +1,4 @@
-export default (state, action) => {
+const AppReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
       return {
@@ -48,4 +48,4 @@ export default (state, action) => {
   }
 };
 
-// () , < ! @ # $ % ^ & * 0 1 2 3 4 5 6 7 8 9
+export default AppReducer;

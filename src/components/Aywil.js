@@ -18,7 +18,7 @@ const Aywil = () => {
   const [hideAywil, setHideAywil] = useState(true);
   const [hideAywil__small, setHideAywil__small] = useState(false);
   const textAreaMaxLength = 200;
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const { addTodo, isEditing, todo, setIsEditing, updateTodo } = useContext(
     Context
@@ -39,7 +39,11 @@ const Aywil = () => {
   }, [width]);
 
   useEffect(() => {
-    checkEditMode();
+    if (isEditing) {
+      setTextArea(todo.text);
+      return;
+    }
+    setTextArea("");
   }, [isEditing]);
 
   const submitTodo = (e) => {
@@ -72,15 +76,6 @@ const Aywil = () => {
     setTextArea("");
     setTextAreaCharLength(0);
     setValidations({ textarea: "" });
-  };
-
-  const checkEditMode = () => {
-    if (isEditing) {
-      setTextArea(todo.text);
-      return;
-    }
-
-    setTextArea("");
   };
 
   const textareaValidation = (e) => {

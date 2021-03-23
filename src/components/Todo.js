@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import DoneIcon from "@material-ui/icons/Done";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -14,7 +14,7 @@ const Todo = ({ id, text, dateCreated, dateAccomplished, isDone }) => {
     },
   };
 
-  const { deleteTodo, doneTodo, isEditing, setIsEditing } = useContext(Context);
+  const { deleteTodo, doneTodo, setIsEditing } = useContext(Context);
 
   const deleteBtnClick = (e) => {
     deleteTodo(id);
